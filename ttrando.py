@@ -5,6 +5,9 @@ import os.path
 import sys
 import argparse
 
+import setuptools
+import pkg_resources
+
 default_conf = os.path.join(
     os.path.expanduser("~"),
     '.ttrando.conf'
@@ -70,6 +73,17 @@ class TTRandoCLI:
         )
         args = parser.parse_args(sys.argv[2:])
         print("Valid!")
+        return 0
+
+    @cli_action
+    def logo(self):
+        parser = argparse.ArgumentParser(
+            prog='ttrando logo',
+            description='print logo'
+        )
+        args = parser.parse_args(sys.argv[2:])
+        my_data = pkg_resources.resource_string(__name__, "data/logo.txt")
+        print(my_data.decode('utf8'))
         return 0
 
 def main():

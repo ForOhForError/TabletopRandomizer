@@ -18,4 +18,5 @@ setuptools.setup(
      ],
      py_modules=['ttrando'],
      entry_points={'console_scripts': ['ttrando = ttrando:main']},
+     include_package_data=True
  )
